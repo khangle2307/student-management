@@ -1,0 +1,151 @@
+<div class="container mt-4">
+  <div class="d-flex justify-content-between">
+    <h4>Danh sách sinh viên</h4>
+    <button
+      class="btn btn-primary"
+      data-bs-toggle="modal"
+      data-bs-target="#addModal"
+    >
+      Thêm
+    </button>
+  </div>
+  <table class="table table-responsive">
+    <thead>
+      <tr class="table-primary">
+        <th scope="col">#</th>
+        <th scope="col">Họ và Tên</th>
+        <th scope="col">Tuổi</th>
+        <th scope="col">Giới tính</th>
+        <th scope="col">Chuyên Ngành</th>
+        <th scope="col">Điểm trung bình</th>
+        <th scope="col">Thao tác</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">1</th>
+        <td>Lê Minh Khang</td>
+        <td>18</td>
+        <td>Nam</td>
+        <td>Lập trình web</td>
+        <td>7.4</td>
+        <td class="d-flex align-items-center gap-2">
+          <a [routerLink]="[]" class="btn btn-outline-secondary"
+            >Sửa thông tin</a
+          >
+          <button
+            type="button"
+            class="btn btn-danger"
+            data-bs-toggle="modal"
+            data-bs-target="#deleteModal"
+          >
+            Xóa
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <!-- Add Modal -->
+  <div
+    class="modal fade"
+    id="addModal"
+    tabindex="-1"
+    aria-labelledby="addModallLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="addModallLabel">Thêm sản phẩm</h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="mb-3">
+              <label for="fullName" class="form-label">Họ và tên</label>
+              <input
+                type="email"
+                class="form-control"
+                id="fullName"
+                aria-describedby="emailHelp"
+              />
+            </div>
+            <div class="mb-3">
+              <label for="age" class="form-label">Tuổi</label>
+              <input type="number" class="form-control" id="age" />
+            </div>
+            <div class="mb-3">
+              <label for="gender" class="form-label">Giới tính</label>
+              <select class="form-select" aria-label="Default select example">
+                <option selected>Chọn giới tính</option>
+                <option value="1">Nam</option>
+                <option value="2">Nữ</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label for="gender" class="form-label">Chuyên ngành</label>
+              <select class="form-select" aria-label="Default select example">
+                <option selected>Chọn chuyên ngành</option>
+                <option value="1">Lập trình web</option>
+                <option value="2">Marketing</option>
+                <option value="3">Thiết kế đồ họa</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label for="gender" class="form-label">Điểm trung bình</label>
+              <input type="number" class="form-control" id="avg" />
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-secondary"
+            data-bs-dismiss="modal"
+          >
+            Hủy
+          </button>
+          <button type="button" class="btn btn-primary">Thêm sản phẩm</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--Delete Modal -->
+  <div
+    class="modal fade"
+    id="deleteModal"
+    tabindex="-1"
+    aria-labelledby="deleteModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="deleteModalLabel">Xóa thông tin</h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body">Bạn có muốn xóa không ?</div>
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-secondary"
+            data-bs-dismiss="modal"
+          >
+            Hủy
+          </button>
+          <button type="button" class="btn btn-danger">Xóa</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
