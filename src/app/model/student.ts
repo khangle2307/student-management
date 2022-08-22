@@ -6,3 +6,11 @@ export interface IStudent {
    major: string,
    avg: number,
 }
+
+export interface InputStudent {
+   fullName: string,
+   age: number,
+   gender: string,
+   major: string,
+   avg: number,
+}

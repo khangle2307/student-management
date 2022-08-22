@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { IStudent } from '../model/student';
+import { InputStudent, IStudent } from '../model/student';
 
 @Injectable({
   providedIn: 'root'
@@ -19,8 +19,8 @@ export class StudentService {
     return this.http.get<IStudent>(`${this.apiUrl}/students/${id}`);
   }
 
-  create(data: IStudent): Observable<IStudent> {
-    return this.http.post<IStudent>(`${this.apiUrl}/students`, data)
+  create(data: InputStudent): Observable<InputStudent> {
+    return this.http.post<InputStudent>(`${this.apiUrl}/students`, data)
   }
 
   updateById(data: IStudent): Observable<IStudent> {

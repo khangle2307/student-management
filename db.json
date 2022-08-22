@@ -1,12 +1,12 @@
 {
   "students": [
     {
-      "id": 1,
-      "fullName": "lê minh khang",
+      "fullName": "lê khang",
       "age": 18,
       "gender": "Nam",
-      "major": "Lập trình web",
-      "avg": 7.4
+      "major": "Thiết kế đồ họa",
+      "avg": 8.6,
+      "id": 1
     }
   ]
 }
