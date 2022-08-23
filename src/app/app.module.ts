@@ -7,12 +7,16 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { TableComponent } from './components/table/table.component';
+import { ProductEditComponent } from './pages/product-edit/product-edit.component';
+import { PaginationComponent } from './components/pagination/pagination.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
-    TableComponent
+    TableComponent,
+    ProductEditComponent,
+    PaginationComponent
   ],
   imports: [
     BrowserModule,

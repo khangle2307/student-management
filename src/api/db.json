@@ -1,0 +1,52 @@
+{
+  "students": [
+    {
+      "fullName": "Lê Minh Đạt",
+      "age": 18,
+      "gender": "Nam",
+      "major": "Marketing",
+      "avg": 7.8,
+      "id": 1
+    },
+    {
+      "fullName": "le minh khang",
+      "age": 18,
+      "gender": "Nam",
+      "major": "Lập trình web",
+      "avg": 8,
+      "id": 2
+    },
+    {
+      "fullName": "Vĩ Bình",
+      "age": 23,
+      "gender": "Nam",
+      "major": "Thiết kế đồ họa",
+      "avg": 6.5,
+      "id": 3
+    },
+    {
+      "fullName": "Lê Lợi",
+      "age": 19,
+      "gender": "Nam",
+      "major": "Chọn chuyên ngành",
+      "avg": 6.7,
+      "id": 4
+    },
+    {
+      "fullName": "Quang trung",
+      "age": 21,
+      "gender": "Nam",
+      "major": "Thiết kế đồ họa",
+      "avg": 7.8,
+      "id": 5
+    },
+    {
+      "fullName": "Hai Bà Trưng",
+      "age": 20,
+      "gender": "Nữ",
+      "major": "Marketing",
+      "avg": 8,
+      "id": 6
+    }
+  ]
+}

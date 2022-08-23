@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { InputStudent, IStudent } from '../model/student';
+import { InputForm, Student } from '../model/student';
 
 @Injectable({
   providedIn: 'root'
@@ -11,23 +11,23 @@ export class StudentService {
   private apiUrl = environment.apiUrl;
   constructor(private http: HttpClient) { }
 
-  getALl(): Observable<IStudent[]> {
-    return this.http.get<IStudent[]>(`${this.apiUrl}/students`);
+  getALl(): Observable<Student[]> {
+    return this.http.get<Student[]>(`${this.apiUrl}/students`);
   }
 
-  getById(id: number): Observable<IStudent> {
-    return this.http.get<IStudent>(`${this.apiUrl}/students/${id}`);
+  getById(id: number): Observable<Student> {
+    return this.http.get<Student>(`${this.apiUrl}/students/${id}`);
   }
 
-  create(data: InputStudent): Observable<InputStudent> {
-    return this.http.post<InputStudent>(`${this.apiUrl}/students`, data)
+  create(data: InputForm): Observable<InputForm> {
+    return this.http.post<InputForm>(`${this.apiUrl}/students`, data)
   }
 
-  updateById(data: IStudent): Observable<IStudent> {
-    return this.http.put<IStudent>(`${this.apiUrl}/students/${data.id}`, data)
+  updateById(data: any): Observable<any> {
+    return this.http.put<any>(`${this.apiUrl}/students/${data.id}`, data)
   }
 
-  removeById(id: number): Observable<IStudent> {
-    return this.http.delete<IStudent>(`${this.apiUrl}/students/${id}`);
+  removeById(id: number): Observable<Student> {
+    return this.http.delete<Student>(`${this.apiUrl}/students/${id}`);
   }
 }

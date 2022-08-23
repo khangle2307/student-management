@@ -1,4 +1,4 @@
-export interface IStudent {
+export interface Student {
    id: number,
    fullName: string,
    age: number,
@@ -7,7 +7,7 @@ export interface IStudent {
    avg: number,
 }
 
-export interface InputStudent {
+export interface InputForm {
    fullName: string,
    age: number,
    gender: string,

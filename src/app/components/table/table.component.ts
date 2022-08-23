@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { InputStudent, IStudent } from 'src/app/model/student';
+import { InputForm, Student } from 'src/app/model/student';
 import { StudentService } from 'src/app/service/student.service';
 
 @Component({
@@ -9,15 +9,14 @@ import { StudentService } from 'src/app/service/student.service';
   styleUrls: ['./table.component.scss']
 })
 export class TableComponent implements OnInit {
-  student: InputStudent = {
+  student: InputForm = {
     fullName: '',
     age: 0,
     gender: '',
     major: '',
     avg: 0,
   }
-  studentDetail?: IStudent;
-  students?: IStudent[];
+  students?: Student[];
   constructor(
     private studentService: StudentService,
     private activedRoute: ActivatedRoute
@@ -30,10 +29,18 @@ export class TableComponent implements OnInit {
   getStudents() {
     this.studentService.getALl().subscribe(data => {
       this.students = data;
+      console.log(this.students);
     })
   }
 
-  onSubmit(data: InputStudent) {
+  getStudent(_id: number) {
+    const id = this.activedRoute.snapshot.paramMap.get('id');
+    this.studentService.getById(Number(id)).subscribe((data) => {
+      console.log(data);
+    })
+  }
+
+  onSubmit(data: InputForm) {
     this.studentService.create(data).subscribe(data => {
       console.log(data);
       alert("Thêm sản phẩm thành công")

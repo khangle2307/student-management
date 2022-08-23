@@ -1,0 +1,107 @@
+<!-- Edit Modal -->
+<div class="container m-3">
+  <h4>Sửa sản phẩm</h4>
+  <form #formEdit="ngForm" (ngSubmit)="onSubmit()">
+    <div class="mb-3">
+      <label for="fullName" class="form-label">Họ và tên</label>
+      <input
+        type="text"
+        class="form-control"
+        [(ngModel)]="student.fullName"
+        name="fullName"
+        #fullName="ngModel"
+        required
+        minlength="6"
+      />
+
+      <div *ngIf="fullName.errors?.['required']" class="text-danger">
+        Vui lòng nhập họ và tên
+      </div>
+      <div *ngIf="fullName.errors?.['minlength']" class="text-danger">
+        Độ dài trên 6 kí tự
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="age" class="form-label">Tuổi</label>
+      <input
+        type="number"
+        class="form-control"
+        id="age"
+        [(ngModel)]="student.age"
+        name="age"
+        #age="ngModel"
+        required
+        min="1"
+      />
+      <div *ngIf="age.errors?.['required']" class="text-danger">
+        Vui lòng nhập tuổi
+      </div>
+      <div *ngIf="age.errors?.['min']" class="text-danger">
+        Tuổi được nhỏ hơn 1
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="gender" class="form-label">Giới tính</label>
+      <select
+        class="form-select"
+        aria-label="Default select example"
+        [(ngModel)]="student.gender"
+        name="gender"
+        #gender="ngModel"
+        required
+      >
+        <option selected>Chọn giới tính</option>
+        <option value="Nam">Nam</option>
+        <option value="Nữ">Nữ</option>
+      </select>
+      <div *ngIf="gender.errors?.['required']" class="text-danger">
+        Vui lòng nhập giới tính
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="gender" class="form-label">Chuyên ngành</label>
+      <select
+        class="form-select"
+        aria-label="Default select example"
+        [(ngModel)]="student.major"
+        name="major"
+        #major="ngModel"
+        required
+      >
+        <option selected>Chọn chuyên ngành</option>
+        <option value="Lập trình web">Lập trình web</option>
+        <option value="Marketing">Marketing</option>
+        <option value="Thiết kế đồ họa">Thiết kế đồ họa</option>
+      </select>
+      <div *ngIf="major.errors?.['required']" class="text-danger">
+        Vui lòng chọn chuyên ngành
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="avg" class="form-label">Điểm trung bình</label>
+      <input
+        type="number"
+        class="form-control"
+        [(ngModel)]="student.avg"
+        name="avg"
+        #avg="ngModel"
+        required
+        min="1"
+      />
+      <div *ngIf="avg.errors?.['required']" class="text-danger">
+        Vui lòng nhập điểm trung bình
+      </div>
+      <div *ngIf="avg.errors?.['min']" class="text-danger">
+        Điểm trung bình phải lớn hơn 1
+      </div>
+    </div>
+    <button
+      type="submit"
+      class="btn btn-primary me-2"
+      [disabled]="!formEdit.form.valid"
+    >
+      Sửa sản phẩm
+    </button>
+    <a routerLink="" class="btn btn-outline-secondary">Hủy</a>
+  </form>
+</div>
