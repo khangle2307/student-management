@@ -22,7 +22,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let student of students">
+      <tr *ngFor="let student of itemsToDisplay">
         <th scope="row">{{ student.id }}</th>
         <td>{{ student.fullName }}</td>
         <td>{{ student.age }}</td>
@@ -86,7 +86,14 @@
       </tr>
     </tbody>
   </table>
-  <app-pagination [items]="students"></app-pagination>
+  <app-pagination
+    [current]="current"
+    [total]="total"
+    (goTo)="onGoTo($event)"
+    (next)="onNext($event)"
+    (previous)="onPrevious($event)"
+  >
+  </app-pagination>
   <!-- Add Modal -->
   <div
     class="modal fade"

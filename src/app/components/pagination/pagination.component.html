@@ -1,9 +1,31 @@
 <nav aria-label="Page navigation example" class="mt-2">
   <ul class="pagination">
-    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-    <li class="page-item"><a class="page-link" href="#">1</a></li>
-    <li class="page-item"><a class="page-link" href="#">2</a></li>
-    <li class="page-item"><a class="page-link" href="#">3</a></li>
-    <li class="page-item"><a class="page-link" href="#">Next</a></li>
+    <li class="page-item">
+      <button
+        class="page-link"
+        [disabled]="current === 1"
+        (click)="onPrevious()"
+      >
+        Previous
+      </button>
+    </li>
+    <li class="page-item" *ngFor="let page of totalPage">
+      <a
+        class="page-link"
+        tabindex="0"
+        (click)="onGoTo(page)"
+        [class.current]="page === current"
+        >{{ page }}</a
+      >
+    </li>
+    <li class="page-item">
+      <button
+        class="page-link"
+        [disabled]="current === total"
+        (click)="onNext()"
+      >
+        Next
+      </button>
+    </li>
   </ul>
 </nav>

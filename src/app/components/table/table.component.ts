@@ -9,6 +9,12 @@ import { StudentService } from 'src/app/service/student.service';
   styleUrls: ['./table.component.scss']
 })
 export class TableComponent implements OnInit {
+  public current: number = 1;
+  // public total: number = 18;
+  public itemsToDisplay: Student[] = [];
+  public perPage = 2;
+  public students: Student[] = [];
+  public total = Math.ceil(this.students.length / this.perPage);
   student: InputForm = {
     fullName: '',
     age: 0,
@@ -16,7 +22,30 @@ export class TableComponent implements OnInit {
     major: '',
     avg: 0,
   }
-  students?: Student[];
+
+  public onGoTo(page: number): void {
+    this.current = page;
+    this.itemsToDisplay = this.paginate(this.current, this.perPage);
+  }
+
+  public onNext(page: number): void {
+    this.current = page + 1;
+    this.itemsToDisplay = this.paginate(this.current, this.perPage);
+  }
+
+  public onPrevious(page: number): void {
+    this.current = page - 1;
+    this.itemsToDisplay = this.paginate(this.current, this.perPage);
+  }
+
+  public paginate(current: number, perPage: number): Student[] {
+    const result = [...this.students.slice((current - 1) * perPage).slice(0, perPage)];
+    // return [...this.students.slice((current - 1) * perPage).slice(0, perPage)]
+    console.log(result);
+
+    return result;
+  }
+
   constructor(
     private studentService: StudentService,
     private activedRoute: ActivatedRoute
@@ -24,12 +53,16 @@ export class TableComponent implements OnInit {
 
   ngOnInit(): void {
     this.getStudents()
+    console.log(this.paginate);
+
   }
 
   getStudents() {
     this.studentService.getALl().subscribe(data => {
       this.students = data;
+      console.log(this.total);
       console.log(this.students);
+      this.itemsToDisplay = this.paginate(this.current, this.perPage)
     })
   }
 
@@ -54,7 +87,4 @@ export class TableComponent implements OnInit {
       window.location.reload();
     })
   }
-
-
-
 }

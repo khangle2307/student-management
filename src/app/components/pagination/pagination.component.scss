@@ -1,0 +1,15 @@
+li {
+  cursor: pointer;
+}
+
+button[disabled] {
+  cursor: default;
+  color: #212529;
+}
+
+a.current,
+a:not(.more):hover {
+  background-color: #007acc;
+  color: #fff;
+  font-weight: 700;
+}

@@ -1,14 +1,6 @@
 {
   "students": [
     {
-      "fullName": "Lê Minh Đạt",
-      "age": 18,
-      "gender": "Nam",
-      "major": "Marketing",
-      "avg": 7.8,
-      "id": 1
-    },
-    {
       "fullName": "le minh khang",
       "age": 18,
       "gender": "Nam",
@@ -47,6 +39,15 @@
       "major": "Marketing",
       "avg": 8,
       "id": 6
+    },
+    {
+      "fullName": "ha quyêt chien",
+      "age": 20,
+      "gender": "Nam",
+      "major": "Thiết kế đồ họa",
+      "avg": 9,
+      "createdAt": 1661251474295,
+      "id": 7
     }
   ]
 }
