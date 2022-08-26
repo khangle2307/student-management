@@ -8,7 +8,7 @@ import { InputForm, Student } from '../model/student';
   providedIn: 'root'
 })
 export class StudentService {
-  private apiUrl = environment.apiUrl;
+  private apiUrl: string = environment.apiUrl;
   constructor(private http: HttpClient) { }
 
   getALl(): Observable<Student[]> {
