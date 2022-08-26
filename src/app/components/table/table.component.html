@@ -22,8 +22,8 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let student of itemsToDisplay">
-        <th scope="row">{{ student.id }}</th>
+      <tr *ngFor="let student of itemsToDisplay; let i = index">
+        <th scope="row">{{ perPage * current + i + 1 }}</th>
         <td>{{ student.fullName }}</td>
         <td>{{ student.age }}</td>
         <td>{{ student.gender }}</td>
@@ -75,7 +75,7 @@
                 <button
                   type="button"
                   class="btn btn-danger"
-                  (click)="onRemove(student.id)"
+                  (click)="removeById(student.id)"
                 >
                   Xóa
                 </button>
@@ -159,18 +159,34 @@
             </div>
             <div class="mb-3">
               <label for="gender" class="form-label">Giới tính</label>
-              <select
-                class="form-select"
-                aria-label="Default select example"
-                [(ngModel)]="student.gender"
-                name="gender"
-                #gender="ngModel"
-                required
-              >
-                <option selected>Chọn giới tính</option>
-                <option value="Nam">Nam</option>
-                <option value="Nữ">Nữ</option>
-              </select>
+              <div class="d-flex gap-2">
+                <div class="form-check">
+                  <input
+                    type="radio"
+                    class="form-check-input"
+                    id="male"
+                    name="gender"
+                    value="Nam"
+                    [(ngModel)]="student.gender"
+                    #gender="ngModel"
+                    required
+                  />
+                  <label class="form-check-label" for="male"> Nam </label>
+                </div>
+                <div class="form-check">
+                  <input
+                    type="radio"
+                    class="form-check-input"
+                    id="female"
+                    name="gender"
+                    value="Nữ"
+                    [(ngModel)]="student.gender"
+                    #gender="ngModel"
+                    required
+                  />
+                  <label class="form-check-label" for="female"> Nữ </label>
+                </div>
+              </div>
               <div *ngIf="gender.errors?.['required']" class="text-danger">
                 Vui lòng nhập giới tính
               </div>
@@ -179,7 +195,6 @@
               <label for="gender" class="form-label">Chuyên ngành</label>
               <select
                 class="form-select"
-                aria-label="Default select example"
                 [(ngModel)]="student.major"
                 name="major"
                 #major="ngModel"
@@ -209,7 +224,7 @@
               <div *ngIf="avg.errors?.['required']" class="text-danger">
                 Vui lòng nhập điểm trung bình
               </div>
-              <div *ngIf="avg.errors?.['min']" class="text-danger">
+              <div *ngIfF="avg.errors?.['min']" class="text-danger">
                 Điểm trung bình phải lớn hơn 1
               </div>
               <div *ngIf="avg.errors?.['max']" class="text-danger">

@@ -48,6 +48,105 @@
       "avg": 9,
       "createdAt": 1661251474295,
       "id": 7
+    },
+    {
+      "fullName": "Bằng Noãn",
+      "age": 23,
+      "gender": "Nam",
+      "major": "Marketing",
+      "avg": 6.5,
+      "createdAt": 1661396502663,
+      "id": 8
+    },
+    {
+      "fullName": "Lý Mục",
+      "age": 21,
+      "gender": "Nam",
+      "major": "Thiết kế đồ họa",
+      "avg": 5.6,
+      "createdAt": 1661396526616,
+      "id": 9
+    },
+    {
+      "fullName": "Khương Hội",
+      "age": 21,
+      "gender": "Nữ",
+      "major": "Thiết kế đồ họa",
+      "avg": 7,
+      "createdAt": 1661396547406,
+      "id": 10
+    },
+    {
+      "fullName": "Vương Tiễn",
+      "age": 25,
+      "gender": "Nam",
+      "major": "Lập trình web",
+      "avg": 8,
+      "createdAt": 1661398588756,
+      "id": 11
+    },
+    {
+      "fullName": "Dương Tiễn",
+      "age": 21,
+      "gender": "Nam",
+      "major": "Lập trình web",
+      "avg": 8,
+      "createdAt": 1661398781772,
+      "id": 12
+    },
+    {
+      "fullName": "Ngộ Không",
+      "age": 21,
+      "gender": "Nam",
+      "major": "Lập trình web",
+      "avg": 9,
+      "createdAt": 1661398814772,
+      "id": 13
+    },
+    {
+      "fullName": "Nguyễn Thị C",
+      "age": 17,
+      "gender": "Nữ",
+      "major": "Marketing",
+      "avg": 7.8,
+      "createdAt": 1661415244071,
+      "id": 14
+    },
+    {
+      "fullName": "Nhân Thị Nhãn",
+      "age": 19,
+      "gender": "Nữ",
+      "major": "Thiết kế đồ họa",
+      "avg": 8,
+      "createdAt": 1661415267118,
+      "id": 15
+    },
+    {
+      "fullName": "Trần Thị Lan",
+      "age": 17,
+      "gender": "Nữ",
+      "major": "Marketing",
+      "avg": 8.7,
+      "createdAt": 1661415296670,
+      "id": 16
+    },
+    {
+      "fullName": "Lê Văn Tuân",
+      "age": 19,
+      "gender": "Nam",
+      "major": "Lập trình web",
+      "avg": 7.8,
+      "createdAt": 1661415324125,
+      "id": 17
+    },
+    {
+      "fullName": "Trần Xuân Tuấn ",
+      "age": 19,
+      "gender": "Nam",
+      "major": "Lập trình web",
+      "avg": 7.4,
+      "createdAt": 1661417528166,
+      "id": 18
     }
   ]
 }

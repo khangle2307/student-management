@@ -9,12 +9,11 @@ import { StudentService } from 'src/app/service/student.service';
   styleUrls: ['./table.component.scss']
 })
 export class TableComponent implements OnInit {
-  public current: number = 1;
-  // public total: number = 18;
+  public current: number = 0;
+  public total: number = 0;
+  public perPage: number = 4;
   public itemsToDisplay: Student[] = [];
-  public perPage = 2;
   public students: Student[] = [];
-  public total = Math.ceil(this.students.length / this.perPage);
   student: InputForm = {
     fullName: '',
     age: 0,
@@ -39,11 +38,7 @@ export class TableComponent implements OnInit {
   }
 
   public paginate(current: number, perPage: number): Student[] {
-    const result = [...this.students.slice((current - 1) * perPage).slice(0, perPage)];
-    // return [...this.students.slice((current - 1) * perPage).slice(0, perPage)]
-    console.log(result);
-
-    return result;
+    return [...this.students.slice((current - 1) * perPage).slice(0, perPage)];
   }
 
   constructor(
@@ -52,17 +47,14 @@ export class TableComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.getStudents()
-    console.log(this.paginate);
-
+    this.getStudents();
   }
 
   getStudents() {
     this.studentService.getALl().subscribe(data => {
       this.students = data;
-      console.log(this.total);
-      console.log(this.students);
-      this.itemsToDisplay = this.paginate(this.current, this.perPage)
+      this.total = Math.ceil(this.students.length / this.perPage);
+      this.itemsToDisplay = this.paginate(this.current, this.perPage);
     })
   }
 
@@ -72,19 +64,18 @@ export class TableComponent implements OnInit {
       console.log(data);
     })
   }
-
-  onSubmit(data: InputForm) {
-    this.studentService.create(data).subscribe(data => {
-      console.log(data);
-      alert("Thêm sản phẩm thành công")
-      window.location.reload();
-    })
-  }
-
-  onRemove(id: number) {
+  removeById(id: number) {
     this.studentService.removeById(id).subscribe(() => {
       this.students = this.students?.filter(item => item.id !== id)
       window.location.reload();
     })
   }
+
+  onSubmit(data: InputForm) {
+    this.studentService.create(data).subscribe(data => {
+      alert("Thêm sản phẩm thành công")
+      window.location.reload();
+    })
+  }
+
 }

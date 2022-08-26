@@ -6,7 +6,6 @@ import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChange
   styleUrls: ['./pagination.component.scss']
 })
 export class PaginationComponent implements OnInit, OnChanges {
-  totalPage?: number[] = [1, 2, 3];
   @Input() current: number = 0;
   @Input() total: number = 0;
 
@@ -30,18 +29,23 @@ export class PaginationComponent implements OnInit, OnChanges {
 
   private getPages(current: number, total: number): number[] {
     if (total <= 7) {
-      return [...Array(total).keys()].map(x => x++);
+      return [...Array(total).keys()].map(x => ++x);
     }
 
     if (current > 5) {
       if (current >= total - 4) {
-        return [1, -1, total - 4, total - 3, total - 2, total - 1, total]
+
+        return [1, -1, total - 4, total - 3, total - 2, total - 1, total];
+
       } else {
-        return [1, -1, current - 1, current, current + 1, -1, total]
+
+        return [1, -1, current - 1, current, current + 1, -1, total];
+
       }
     }
 
-    return [1, 2, 3, 4, 5, -1, total]
+
+    return [1, 2, 3, 4, 5, -1, total];
   }
 
   constructor() { }
