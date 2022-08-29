@@ -140,13 +140,31 @@
       "id": 17
     },
     {
-      "fullName": "Trần Xuân Tuấn ",
+      "fullName": "Bằng Noãn",
       "age": 19,
       "gender": "Nam",
       "major": "Lập trình web",
-      "avg": 7.4,
-      "createdAt": 1661417528166,
+      "avg": 8.6,
+      "createdAt": 1661479939865,
       "id": 18
+    },
+    {
+      "fullName": "Songoku",
+      "age": 18,
+      "gender": "Nam",
+      "major": "Thiết kế đồ họa",
+      "avg": 7.8,
+      "createdAt": 1661498679736,
+      "id": 19
+    },
+    {
+      "fullName": "Bumma asc",
+      "age": 19,
+      "gender": "Nữ",
+      "major": "Thiết kế đồ họa",
+      "avg": 8,
+      "createdAt": 1661498709696,
+      "id": 20
     }
   ]
 }
