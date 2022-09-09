@@ -1,2 +1,7 @@
 <app-navbar></app-navbar>
-<router-outlet></router-outlet>
+<app-pagination
+  [currentPage]="currentPage"
+  [totalItem]="totalItem"
+  [itemPerPage]="itemPerPage"
+  (pageOnChage)="pageChange($event)"
+></app-pagination>

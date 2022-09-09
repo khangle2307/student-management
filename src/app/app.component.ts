@@ -6,6 +6,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+  currentPage: number = 1;
+  totalItem: number = 10;
+  itemPerPage: number = 10;
+
+  public pageChange(page: number) {
+    this.currentPage = page;
+  }
 
 
 }
