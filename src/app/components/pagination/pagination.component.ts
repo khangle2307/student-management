@@ -14,37 +14,58 @@ import {
   styleUrls: ['./pagination.component.scss'],
 })
 export class PaginationComponent implements OnInit, OnChanges {
-  @Input() currentPage: number = 0;
-  @Input() totalItem: number = 0;
-  @Input() itemPerPage: number = 0;
-
-  @Output() pageOnChage: EventEmitter<number> = new EventEmitter<number>();
+  @Input() currentPage = 0;
+  @Input() totalItem = 0;
+  @Input() itemPerPage = 0;
   pages: number[] = [];
   totalPage: number[] = [];
+  @Output() pageOnChage: EventEmitter<number> = new EventEmitter<number>();
+
 
   public pageChange(page: number) {
     this.pageOnChage.emit(page);
   }
 
-  public onPrevious(page: number[], skip: number): number[] {
-    for (let i = 0; i < this.totalPage.length; i++) {
-      page[i] = this.totalPage[i] - skip;
-      console.log(`value of page ${this.totalPage[i]} and index ${i} : `, page[i]);
-    }
-    return page
+  public changePage(index: number) {
+    this.currentPage = this.totalPage[index];
   }
 
-  public onNext(page: number[], skip: number): number[] {
+
+  public onPrevious(pages: number[], skip: number): number[] {
+
     for (let i = 0; i < this.totalPage.length; i++) {
-      page[i] = this.totalPage[i] + skip;
-      console.log(`value of page ${this.totalPage[i]} and index ${i} : `, page[i]);
+      pages[i] = this.totalPage[i] - skip;
+      this.currentPage = this.totalPage[i] - skip + 6;
     }
-    return page
+    return pages
   }
+
+
+  public onNext(pages: number[], skip: number): number[] {
+    const totalPage = Math.ceil(this.totalItem / this.itemPerPage);
+
+    for (let i = 0; i < this.totalPage.length; i++) {
+      pages[i] = this.totalPage[i] + skip;
+      this.currentPage = this.totalPage[i] - skip + 1;
+    }
+    console.log(pages);
+
+    if (pages[0] >= totalPage - 5) {
+      const lastPage = pages.slice(0, pages.indexOf(totalPage + 1, 0));
+      console.log(`currentPage : ${pages[0]}`, typeof (pages[0]));
+      console.log(`totalPage : ${totalPage}`, typeof (totalPage));
+      pages = lastPage;
+      console.log(pages);
+
+      return pages;
+    }
+
+    return pages
+  }
+
 
   public onChangeTotalItem(value: number) {
     this.totalPage = this.getPages(this.currentPage, value);
-    console.table(this.totalPage);
     this.pages.length = Math.ceil(this.totalItem / this.itemPerPage);
   }
 
@@ -54,6 +75,7 @@ export class PaginationComponent implements OnInit, OnChanges {
   }
 
   constructor() { }
+
 
   ngOnChanges(changes: SimpleChanges): void {
     if (
@@ -65,61 +87,26 @@ export class PaginationComponent implements OnInit, OnChanges {
     }
   }
 
+  // eslint-disable-next-line @angular-eslint/no-empty-lifecycle-method
   ngOnInit(): void {
-
   }
 
-  // private getPages  (currentPage: number, totalPage: number): any[] {
-  //   totalPage = Math.ceil(this.totalItem / this.itemPerPage);
-  //   console.log("totalPage count : ", totalPage);
-
-  //   if (totalPage <= 7) {
-  //     const result = [...Array(totalPage).keys()].map(x => ++x);
-  //     console.log("result of array : ", result);
-  //     return result;
-  //   }
-
-  //   if (currentPage > 5) {
-  //     if (currentPage >= totalPage - 4) {
-  //       const result = ['...', currentPage, currentPage + 1, currentPage + 2, '...']
-  //       console.log("result of current >= totalPage -4 : ", result);
-  //       return result;
-  //     }
-  //   }
-
-  //   const result = [1, 2, 3, 4, 5, "..."];
-  //   console.log("totalPage length : ", result);
-  //   return result;
-  // }
-
-
-  // if (currentPage > 5) {
-  // }
-
-  // if (currentPage >= totalPage - 4) {
-  //   const pages: Page[] = [];
-  //   for (let i = 1; i <= totalPage; i++) {
-  //     pages.push({
-  //       label: i,
-  //       value: i,
-  //     });
-  //   }
-
-  //   pages.unshift({ label: '...', value: currentPage - -1 });
-  //   pages.push({ label: '...', value: currentPage + 1 });
-  //   console.log('new pages : ', pages);
-  //   const result = pages;
-  //   console.log('result of current >= totalPage -4 : ', result);
-  //   return result;
-  // }
-
+  /**
+   * 
+   * @param currentPage : currentPage of pages
+   * @param totalPage : length of totalPage
+   * @return list of pages by condition
+   */
   private getPages(currentPage: number, totalPage: number): any[] {
+    const firstFiveElement = 5;
     totalPage = Math.ceil(this.totalItem / this.itemPerPage);
-    if (totalPage <= 7) {
+    if (totalPage <= firstFiveElement) {
       return [...Array(totalPage).keys()].map((x) => ++x);
     }
 
-    const result = [...Array(totalPage).keys()].map((x) => ++x as any).slice(0, 5);
+    const result = [...Array(totalPage).keys()].map((x) => ++x as any).slice(0, 6);
     return result;
   }
 }
+
+
